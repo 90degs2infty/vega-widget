@@ -157,6 +157,17 @@ Find their full license on [github.org](https://github.com/koaning/wigglystuff/b
 
 ## Development
 
+### Building distributions
+
+Due to the non-standard source layout of this project, [`uv`'s default of building a binary distribution from a source distribution](https://docs.astral.sh/uv/concepts/projects/build/#using-uv-build) does not work out of the box.
+Instead, use
+
+```console
+> uv build --sdist --wheel
+```
+
+to build a source and a binary distribution in one go - but each from the source tree directly.
+
 ### Bundling javascript
 
 ```console
