@@ -19,12 +19,26 @@ polars = [
     "polars>=1.39.3",
 ]
 
-[tool.uv.build-backend]
-module-root = "src/py"
-
 [build-system]
-requires = ["uv_build>=0.10.12,<0.11.0"]
-build-backend = "uv_build"
+requires = ["hatchling", "hatch-build-scripts"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build]
+packages = ["src/py/vega_widget"]
+exclude = [
+    ".gitignore"
+]
+
+# Bundle typescript code
+[[tool.hatch.build.hooks.build-scripts.scripts]]
+work_dir = "."
+commands = [
+    "npm run build",
+]
+artifacts = [
+    "src/py/vega_widget/static/index.js",
+]
+out_dir = "."
 
 [dependency-groups]
 dev = [

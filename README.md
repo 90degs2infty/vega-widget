@@ -9,6 +9,12 @@ Plain `vega` visualizations as `marimo`-compatible `anywidget`.
 - `marimo`
 - (optional) some dataframe library from `pandas`, `polars` and `ibis`
 
+#### :warning: A note on `npm`
+
+This package is currently not published to any package index.
+This means that installation (as detailed in [Install](#install)) is currently limited to installation from source.
+Given that this package works at the boundary between `python` and `javascript`, this introduces the additional requirement of having `npm` available in your `$PATH` to transpile the provided `typescript` code into `javascript`.
+
 ### Install
 
 From inside some `uv` managed project, add `vega_widget` as in
@@ -150,6 +156,17 @@ This repository is heavily inspired by [koaning/wigglystuff](https://github.com/
 Find their full license on [github.org](https://github.com/koaning/wigglystuff/blob/main/LICENSE).
 
 ## Development
+
+### Building distributions
+
+Due to the non-standard source layout of this project, [`uv`'s default of building a binary distribution from a source distribution](https://docs.astral.sh/uv/concepts/projects/build/#using-uv-build) does not work out of the box.
+Instead, use
+
+```console
+> uv build --sdist --wheel
+```
+
+to build a source and a binary distribution in one go - but each from the source tree directly.
 
 ### Bundling javascript
 
