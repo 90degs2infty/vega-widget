@@ -23,11 +23,11 @@ polars = [
 requires = ["hatchling", "hatch-build-scripts"]
 build-backend = "hatchling.build"
 
-[tool.hatch.build.targets.sdist]
+[tool.hatch.build]
 packages = ["src/py/vega_widget"]
 
 # Bundle typescript code
-[[tool.hatch.build.targets.sdist.hooks.build-scripts.scripts]]
+[[tool.hatch.build.hooks.build-scripts.scripts]]
 work_dir = "."
 commands = [
     "npm run build",
