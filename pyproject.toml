@@ -25,6 +25,9 @@ build-backend = "hatchling.build"
 
 [tool.hatch.build]
 packages = ["src/py/vega_widget"]
+exclude = [
+    ".gitignore"
+]
 
 # Bundle typescript code
 [[tool.hatch.build.hooks.build-scripts.scripts]]
