@@ -25,16 +25,12 @@ class VegaWidget(anywidget.AnyWidget):
 
     @traitlets.observe("spec")
     def _on_spec_change(self, change: dict):
-        print("_on_spec_change")
-
         new_spec = VegaWidget._patch_spec(change["new"], self.data.keys())
 
         self._spec_json = json.dumps(new_spec)
-        print(self._spec_json)
 
     @traitlets.observe("data")
     def _on_data_change(self, change: dict):
-        print("_on_data_change")
         new_data = change["new"]
         old_data = change["old"]
 
@@ -45,12 +41,10 @@ class VegaWidget(anywidget.AnyWidget):
 
         # Trigger re-patching the data section of spec
         if len(set(new_data.keys()).symmetric_difference(old_data.keys())) > 0:
-            print("Trigger")
             new_spec = VegaWidget._patch_spec(self.spec, new_data.keys())
             self._spec_json = json.dumps(new_spec)
     
     @staticmethod
     def _patch_spec(spec: dict[str, Any], datasets: list[str]) -> dict[str, Any]:
-        print("_patch_spec")
         spec["data"] = {"name": d for d in datasets}
         return spec
