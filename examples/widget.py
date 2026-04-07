@@ -7,7 +7,6 @@ app = marimo.App(width="medium")
 @app.cell
 def _():
     from vega_widget.ui import VegaWidget
-    import vega_widget.spec as spec
     import marimo as mo
 
     import json
