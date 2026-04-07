@@ -33,7 +33,7 @@ exclude = [
 [[tool.hatch.build.hooks.build-scripts.scripts]]
 work_dir = "."
 commands = [
-    "npm run --include=dev build",
+    "npm install --include dev && npm run --include=dev build",
 ]
 artifacts = [
     "src/py/vega_widget/static/index.js",
